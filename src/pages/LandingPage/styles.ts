@@ -8,12 +8,22 @@ export const Header = styled.header`
 `
 
 export const HeaderContent = styled.div`
+  width: 90%;
   max-width: 1120px;
-  margin: 0 auto;
+
+  margin: auto;
   display: flex;
   align-items: center;
+  flex-direction: row;
+
   > img {
     height: 80px;
+  }
+
+  @media (max-width: 800px) {
+    margin-left: -100px;
+    align-items: center;
+    flex-direction: column;
   }
 `
 
@@ -70,15 +80,30 @@ export const AuthContent = styled.div`
     width: 170px;
     margin-top: -5px;
   }
+
+  @media (max-width: 800px) {
+    svg {
+      margin-left: 80px;
+    }
+    a {
+      margin-left: 40px;
+    }
+    button {
+      margin-top: 10px;
+      margin-left: 40px;
+    }
+  }
 `
 
 export const MainSection = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  width: 100%;
+
+  width: 90%;
   max-width: 1120px;
-  margin: 0 auto;
+
+  margin: auto;
 
   div {
     flex-direction: column;
@@ -116,12 +141,14 @@ export const Representantes = styled.div`
   background: #f4ede8;
 
   width: 100%;
+
   margin: 42px auto 0;
   display: flex;
   align-items: center;
   flex-direction: row;
 
   > img {
+    width: 90%;
     display: flex;
     margin: 0 auto;
     align-items: center;
@@ -146,7 +173,10 @@ export const RecentProducts = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    max-width: 1280px;
+
+    width: 90%;
+    max-width: 1120px;
+
     flex-wrap: wrap;
     margin-bottom: 54px;
 

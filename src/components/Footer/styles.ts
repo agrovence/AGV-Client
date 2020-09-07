@@ -26,3 +26,19 @@ export const FooterContent = styled.div`
     font-size: 20px;
   }
 `
+
+export const FooterMedias = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  margin-right: 18px;
+
+  a {
+    img {
+      width: 50px;
+      margin-top: 30px;
+      margin-left: 18px;
+    }
+  }
+`
