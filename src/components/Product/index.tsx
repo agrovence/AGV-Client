@@ -1,8 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { FiEdit3, FiTrash } from 'react-icons/fi'
-
-import { Container, ProductSection } from './styles'
 // import api from '../../services/apiClient'
 
 interface IProduct {
@@ -19,24 +16,22 @@ const Product: React.FC<IProps> = ({ product }: IProps) => {
   // const [isAvailable, setIsAvailable] = useState(food.available)
 
   return (
-    <Container>
-      <ProductSection>
-        <div>
-          <img
-            src="https://agriculture.trimble.com/wp-content/uploads/2019/01/ezsteer-trimble-ag-inset-1.png"
-            alt="EZ Guide 250"
-          />
+    <div className="col-xl-3 col-lg-4 col-md-6 mb-5">
+      <a className="card lift h-100" href="#!">
+        <div className="card-flag card-flag-dark card-flag-top-right card-flag-lg">
+          R$115
         </div>
-
-        <section>
-          <h2>EZ Guide 250</h2>
-
-          <a>
-            <b>Ver mais detalhes</b>
-          </a>
-        </section>
-      </ProductSection>
-    </Container>
+        <img
+          className="card-img-top"
+          src="https://agriculture.trimble.com/wp-content/uploads/2019/01/ezsteer-trimble-ag-inset-1.png"
+          alt="..."
+        />
+        <div className="card-body p-3">
+          <div className="card-title small mb-0">GPS Ez Guide 250</div>
+          <div className="text-xs text-gray-500">2 dias atrás</div>
+        </div>
+      </a>
+    </div>
   )
 }
 
