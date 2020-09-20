@@ -84,7 +84,7 @@ const SignUp: React.FC = () => {
     <div id="layoutDefault">
       <div id="layoutDefault_content">
         <main className="bg-dark">
-          <Header />
+          <Header isAuth={false} />
           <div className="container">
             <div className="row justify-content-center">
               <div
