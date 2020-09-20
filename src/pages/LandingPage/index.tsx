@@ -19,6 +19,7 @@ import Product from '../../components/Product'
 import Category from '../../components/Category'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
+import Representantes from '../../components/Representantes'
 // import api from '../../services/apiClient'
 
 const LandingPage: React.FC = () => {
@@ -26,7 +27,7 @@ const LandingPage: React.FC = () => {
     <div id="layoutDefault">
       <div id="layoutDefault_content">
         <main>
-          <Header />
+          <Header isAuth={false} />
           <header
             className="page-header page-header-dark bg-img-repeat bg-white"
             style={{
@@ -101,6 +102,16 @@ const LandingPage: React.FC = () => {
               </svg>
             </div>
           </header>
+          <section className="py-15 bg-white">
+            <div className="container">
+              <h2 className="mb-4 text-dark">
+                Nossas principais representantes
+              </h2>
+              <div className="row">
+                <Representantes />
+              </div>
+            </div>
+          </section>
           <section id="products-categories" className="bg-light py-10">
             <div className="container">
               <h2 className="mb-4">Posts mais Recentes</h2>
