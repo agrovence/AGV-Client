@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { InputHTMLAttributes } from 'react'
 import { Link } from 'react-router-dom'
 
 import logoImg from '../../assets/agrovencedeitado.svg'
 
-const Header: React.FC = () => {
+interface HeaderProps extends InputHTMLAttributes<HTMLInputElement> {
+  isAuth: boolean
+  containerStyle?: object
+}
+
+const Header: React.FC<HeaderProps> = ({
+  isAuth = false,
+  containerStyle = {},
+}) => {
   return (
-    <nav className="navbar navbar-marketing navbar-expand-lg bg-transparent navbar-dark fixed-top">
+    <nav
+      className="navbar navbar-marketing navbar-expand-lg bg-transparent navbar-dark fixed-top"
+      style={containerStyle}
+    >
       <div className="container">
         <Link to="/" className="nav-item">
           <img src={logoImg} style={{ width: '60%' }} />
@@ -94,15 +105,29 @@ const Header: React.FC = () => {
                 </a>
               </div>
             </li>
-            <li className="nav-item">
-              <Link to="/signin" className="nav-link">
-                <i className="fas fa-sign-in-alt text-white"></i>
-              </Link>
-            </li>
+            {!isAuth ? (
+              <li className="nav-item">
+                <Link to="/signin" className="nav-link">
+                  <i className="fas fa-sign-in-alt text-white"></i>
+                </Link>
+              </li>
+            ) : null}
+            {isAuth ? (
+              <li className="nav-item">
+                <Link to="/profile" className="nav-link">
+                  <i className="fas fa-user text-white"></i>
+                </Link>
+              </li>
+            ) : null}
           </ul>
-          <Link to="/signup" className="btn-red btn rounded-pill px-4 ml-lg-4">
-            Cadastrar Agora<i className="fas fa-arrow-right ml-1"></i>
-          </Link>
+          {!isAuth ? (
+            <Link
+              to="/signup"
+              className="btn-red btn rounded-pill px-4 ml-lg-4"
+            >
+              Cadastrar Agora<i className="fas fa-arrow-right ml-1"></i>
+            </Link>
+          ) : null}
         </div>
       </div>
     </nav>
