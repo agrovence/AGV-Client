@@ -11,6 +11,7 @@ import Profile from '../pages/Profile'
 import LandingPage from '../pages/LandingPage'
 
 import Dashboard from '../pages/Dashboard'
+import ProductsDashboard from '../pages/ProductsDashboard'
 
 const Routes: React.FC = () => (
   <Switch>
@@ -21,9 +22,7 @@ const Routes: React.FC = () => (
     <Route path="/reset-password" component={ResetPassword} />
     <Route path="/profile" component={Profile} />
     <Route path="/dashboard" component={Dashboard} />
-
-    {/* <Route path="/dashboard" component={Dashboard} isPrivate />
-     */}
+    <Route path="/products-dashboard" component={ProductsDashboard} />
   </Switch>
 )
 
