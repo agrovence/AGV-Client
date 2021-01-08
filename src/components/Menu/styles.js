@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { shade } from 'polished';
 
 export const Container = styled.div`
-    width: 150px;
-    margin-left: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,8 +101,8 @@ export const Name = styled.strong`
 `;
 
 export const PerfilImage = styled.img`
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,7 +126,6 @@ export const MenuContainer = styled.div`
 
     opacity: 0;
     display: none;
-    transition: opacity 0.4s;
 
     background-color: ${props => props.theme.colors.primary};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -137,6 +134,11 @@ export const MenuContainer = styled.div`
         opacity: 1;
         display: flex;
     `}
+
+    @media only screen and (max-width: 600px) {
+        margin-right: 180px;
+        margin-top: 20px;
+    }
 
     &::before{
         content: '';
@@ -147,5 +149,9 @@ export const MenuContainer = styled.div`
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+
+        @media only screen and (max-width: 600px) {
+            display: none;
+        }
     };
 `;

@@ -1,3 +1,4 @@
+import "react-loadingmask/dist/react-loadingmask.css";
 import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Routes from 'routes/index'

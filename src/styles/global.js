@@ -13,4 +13,9 @@ export default createGlobalStyle`
         color: ${props => props.theme.colors.text};
         font-family: 'Quicksand', sans-serif;
     }
+
+    .loading{
+        width: 100%;
+        height: 100%;
+    }
 `;

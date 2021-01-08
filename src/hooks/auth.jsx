@@ -5,17 +5,15 @@ const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
     const [data, setData] = useState(() => {
-        const access_token = global.localStorage.getItem(
-            '@Agrovence:access_token',
-        );
+        const token = global.localStorage.getItem('@Agrovence:token');
         const user = global.localStorage.getItem('@Agrovence:user');
-        api.defaults.headers.authorization = `Bearer ${access_token}`;
+        api.defaults.headers.authorization = `Bearer ${token}`;
 
         api.defaults.headers.common['Content-Type'] = 'application/json';
         api.defaults.headers.common.Accept = 'application/json';
 
-        if (access_token && user) {
-            return { access_token, user: JSON.parse(user) };
+        if (token && user) {
+            return { token, user: JSON.parse(user) };
         }
 
         return {};
@@ -24,7 +22,7 @@ const AuthProvider = ({ children }) => {
     const signIn = useCallback(async ({ email, password }) => {
         setData({});
 
-        global.localStorage.removeItem('@Agrovence:access_token');
+        global.localStorage.removeItem('@Agrovence:token');
         global.localStorage.removeItem('@Agrovence:user');
 
         const response = await api.post('/auth/login', {
@@ -32,24 +30,23 @@ const AuthProvider = ({ children }) => {
             password,
         });
 
-        const { access_token } = response.data;
-        api.defaults.headers.authorization = `Bearer ${access_token}`;
+        const { token } = response.data.data;
+        api.defaults.headers.authorization = `Bearer ${token}`;
         api.defaults.headers.common['Content-Type'] = 'application/json';
         api.defaults.headers.common.Accept = 'application/json';
 
-        const responseMe = await api.get('auth/me');
+        const responseMe = await api.get('/me');
 
-        const user = responseMe.data[0];
-        const { role } = responseMe.data[0];
+        const user = responseMe.data.data;
 
-        global.localStorage.setItem('@Agrovence:access_token', access_token);
+        global.localStorage.setItem('@Agrovence:token', token);
         global.localStorage.setItem('@Agrovence:user', JSON.stringify(user));
 
-        setData({ access_token, user, role });
+        setData({ token, user });
     }, []);
 
     const signOut = useCallback(async () => {
-        global.localStorage.removeItem('@Agrovence:access_token');
+        global.localStorage.removeItem('@Agrovence:token');
         global.localStorage.removeItem('@Agrovence:user');
 
         setData({});
@@ -58,7 +55,7 @@ const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider
             value={{
-                access_token: data.access_token,
+                token: data.token,
                 user: data.user,
                 signIn,
                 signOut,

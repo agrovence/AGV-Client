@@ -37,6 +37,7 @@ export const Menu = styled(MenuComponent)`
     ${props => props.open && css`
         overflow-y: hidden;
     `}
+    width: 100%;
 `;
 
 export const LogoContainer = styled.div`
@@ -48,7 +49,8 @@ export const LogoContainer = styled.div`
 
 export const AvatarContainer = styled(ClickAwayListener)`
     display: flex;
-    width: 300px;
+    align-items: flex-end;
+    justify-content: center;
 `;
 
 export const MenuText = styled(Link)`
