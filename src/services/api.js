@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://agrovence.herokuapp.com/agv/v1'
+    baseURL: process.env.REACT_APP_API
 })
 
 export default api;

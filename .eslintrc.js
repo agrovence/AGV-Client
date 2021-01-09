@@ -32,6 +32,8 @@ module.exports = {
           extensions: ['.jsx', '.js']
         }
       ],
+      'no-underscore-dangle': 'off',
+      'no-undef': 'off',
       'camelcase': 'off',
       'import/no-unresolved': 'off',
       'import/prefer-default-export': 'off',

@@ -38,7 +38,8 @@ const Home = () => {
     }, []);
 
     const getItems = useCallback(async () => {
-        const response = await api.get('/products');
+        const response = await api.get('/products?page=1&limit=9');
+        console.log(response.data.data);
 
         setProducts(response.data.data);
     }, []);
@@ -92,7 +93,7 @@ const Home = () => {
                     <ProductCard
                         id={product.id}
                         title={product.name}
-                        image={imgCard}
+                        image={product.image.url}
                         price={isLogged && product.price}
                         description={product.description}
                     />

@@ -116,6 +116,10 @@ export const MenuContainer = styled.div`
     width: 250px;
     height: 300px;
 
+    ${props => !props.hasAuthenticated && css`
+        height: 180px;
+    `}
+
     position: absolute;
     top: calc(100% + 12px);
 

@@ -18,11 +18,13 @@
     "react-icons": "^4.1.0",
     "react-loadingmask": "^4.0.6",
     "react-lottie": "^1.2.3",
+    "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-spring": "^8.0.27",
     "react-switch": "^5.0.1",
     "react-tabs": "^3.1.2",
+    "react-toastify": "^6.2.0",
     "styled-components": "^5.2.1",
     "styled-css-grid": "^1.2.1",
     "web-vitals": "^0.2.4"
