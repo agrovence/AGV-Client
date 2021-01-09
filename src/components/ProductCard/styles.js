@@ -111,8 +111,13 @@ export const Button = styled(Link)`
     justify-content: center;
     align-items: center;
     text-align: center;
+
     & + a{
         margin-left: 10px;
+    }
+
+    #icon{
+        margin-right: 2px;
     }
 
     &:hover{
@@ -131,3 +136,49 @@ export const Button = styled(Link)`
         height: 25px;
     }
 `;
+
+export const ModalContainer = styled.div`
+    width: 320px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: ${props => props.theme.colors.primary};
+    border-radius: 6px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+`;
+export const ModalTitle = styled.h3`
+    display: flex;
+    text-align: center;
+    margin-bottom: 10px;
+`;
+export const ModalButton = styled.button`
+    outline: none;
+    border: none;
+    width: 100px;
+    height: 20px;
+    border-radius: 3px;
+    color: #fff;
+    font-family: 'Quicksand';
+    font-weight: 700;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+
+    &:hover{
+        cursor: pointer;
+        transform: translateY(-2px)
+    }
+
+    & + button {
+        margin-left: 10px;
+    }
+
+    ${props => props.confirm && css`
+        background: #95C623;
+    `}
+
+    ${props => props.cancel && css`
+        background: #CF3E3E;
+    `}
+`;
+
