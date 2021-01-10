@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
     IoPersonCircleOutline,
@@ -32,16 +32,18 @@ const Menu = ({ open }) => {
     const hasAuthenticated = !!localStorage.getItem('@Agrovence:token');
 
     const getUserAvatar = useCallback(() => {
-        if (user.image) return user.image.url;
+        if (user.image === null) {
+            return defaultAvatar;
+        }
 
-        return defaultAvatar;
+        return user.image.url;
     }, []);
 
     return (
         <Container>
             <PerfilContainer open={open}>
                 <PerfilImage
-                    src={hasAuthenticated ? getUserAvatar : defaultAvatar}
+                    src={hasAuthenticated ? getUserAvatar() : defaultAvatar}
                     alt="avatar"
                 />
             </PerfilContainer>

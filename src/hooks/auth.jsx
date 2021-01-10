@@ -23,17 +23,10 @@ const AuthProvider = ({ children }) => {
     });
 
     const signIn = useCallback(async ({ email, password }) => {
-        setData({});
-
-        global.localStorage.removeItem('@Agrovence:token');
-        global.localStorage.removeItem('@Agrovence:user');
-        global.localStorage.removeItem('@Agrovence:refreshToken');
-
         const response = await api.post('/auth/login', {
             email,
             password,
         });
-
         const { token, refreshToken } = response.data.data;
         api.defaults.headers.authorization = `Bearer ${token}`;
         api.defaults.headers.common['Content-Type'] = 'application/json';
@@ -41,7 +34,7 @@ const AuthProvider = ({ children }) => {
 
         const responseMe = await api.get('/me');
 
-        const user = responseMe.data.data;
+        const user = responseMe.data;
 
         global.localStorage.setItem('@Agrovence:token', token);
         global.localStorage.setItem('@Agrovence:refreshToken', refreshToken);

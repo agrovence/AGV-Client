@@ -10,8 +10,6 @@ import Trimble from 'assets/representatives/trimble';
 import Headsight from 'assets/representatives/headsight';
 import ProductCard from 'components/ProductCard';
 
-import imgCard from 'assets/Frame.png';
-
 import { useAuth } from 'hooks/auth';
 import api from 'services/api';
 import {
@@ -39,8 +37,6 @@ const Home = () => {
 
     const getItems = useCallback(async () => {
         const response = await api.get('/products?page=1&limit=9');
-        console.log(response.data.data);
-
         setProducts(response.data.data);
     }, []);
 
@@ -86,11 +82,12 @@ const Home = () => {
                 </LogoContainer>
             </Carousel>
 
-            <SectionTitle>Produtos recentess</SectionTitle>
+            <SectionTitle>Produtos recentes</SectionTitle>
 
             <CardContainer>
                 {products.map(product => (
                     <ProductCard
+                        key={product.id}
                         id={product.id}
                         title={product.name}
                         image={product.image.url}

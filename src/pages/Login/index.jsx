@@ -1,39 +1,33 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import Lottie from 'react-lottie';
 import LoadingMask from 'react-loadingmask';
 
 import farm from 'assets/farm.json';
-import farm2 from 'assets/farm2.json';
 import logo from 'assets/logo.png';
 
 import InputBasic from 'components/InputBasic';
 import Button from 'components/Button';
 import { useAuth } from 'hooks/auth';
-import { useHistory } from 'react-router-dom';
-import { Container, ContentContainer, Logo, Form, Copyright } from './styles';
+import {
+    Container,
+    ContentContainer,
+    Logo,
+    Form,
+    Copyright,
+    CreateAccount,
+} from './styles';
 
 const Login = () => {
-    const [isMobile, setIsMobile] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const history = useHistory();
     const { signIn } = useAuth();
 
-    useEffect(() => {
-        function getWindowDimensions() {
-            const { innerWidth: width } = global.window;
-
-            if (width <= 1000) {
-                setIsMobile(true);
-            }
-        }
-        getWindowDimensions();
-    }, []);
-
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: isMobile ? farm2 : farm,
+        animationData: farm,
         rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice',
         },
@@ -46,7 +40,7 @@ const Login = () => {
             setLoading(false);
             history.push('/');
         } catch (error) {
-            console.log(error);
+            setLoading(false);
         }
     }, []);
 
@@ -61,19 +55,12 @@ const Login = () => {
                         <Button type="submit">Fazer Login</Button>
                     </LoadingMask>
                 </Form>
+                <CreateAccount to="create-account">
+                    Criar uma conta
+                </CreateAccount>
                 <Copyright>Crafted by Vinicios Engelage</Copyright>
             </ContentContainer>
-            <Lottie
-                style={
-                    isMobile && {
-                        position: 'absolute',
-                        bottom: 0,
-                    }
-                }
-                options={defaultOptions}
-                width="100%"
-                height={isMobile ? '100px' : '100%'}
-            />
+            <Lottie options={defaultOptions} height="300px" />
         </Container>
     );
 };

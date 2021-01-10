@@ -5,7 +5,7 @@ export const Container = styled.div`
     width: 100%;
     background: ${props => props.theme.colors.primary};
     border-radius: 3px;
-    height: 40px;
+    height: 60px;
     
     ${props => props.theme && css`
         &:hover{
@@ -31,4 +31,5 @@ export const ButtonText = styled.button`
     color: ${props => props.theme.colors.secundary};
     font-family: 'Quicksand';
     font-weight: 500;
+    font-size: 18px;
 `;

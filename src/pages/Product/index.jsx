@@ -3,7 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from 'components/Tabs';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import productImage from 'assets/image.png';
 import api from 'services/api';
 import { Container, Title, Image, Price, Description } from './styles';
 
@@ -12,8 +11,6 @@ const Product = ({ match }) => {
 
     const getProduct = useCallback(async () => {
         const response = await api.get(`/products/${match.params.id}`);
-
-        console.log(response.data);
         setProduct(response.data);
     }, []);
 

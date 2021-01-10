@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useField } from '@unform/core';
 
-import { Container, Input } from './styles';
+import { Container, Input, ErrorText } from './styles';
 
 const InputBasic = ({ name, label, ...rest }) => {
     const inputRef = useRef(null);
@@ -28,7 +28,11 @@ const InputBasic = ({ name, label, ...rest }) => {
     }, [fieldName, registerField]);
 
     return (
-        <Container isFocused={isFocused} isFilled={isFilled}>
+        <Container
+            isFocused={isFocused}
+            isFilled={isFilled}
+            isErrored={!!error}
+        >
             <label htmlFor={fieldName}>{label}</label>
             <Input
                 onFocus={handleIsFocused}
@@ -38,7 +42,7 @@ const InputBasic = ({ name, label, ...rest }) => {
                 defaultValue={defaultValue}
                 {...rest}
             />
-            {error && <span className="error">{error}</span>}
+            {error && <ErrorText>{error}</ErrorText>}
         </Container>
     );
 };

@@ -75,8 +75,8 @@ export const AvatarContainer = styled.div`
 `;
 
 export const Avatar = styled.img`
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
 `;
 
 export const Divisor = styled.hr`
@@ -97,7 +97,7 @@ export const Name = styled.strong`
     height: 100%;
     align-items: center;
     justify-content: center;
-    margin-left: 5px;
+    margin-left: 10px;
 `;
 
 export const PerfilImage = styled.img`
